@@ -19,12 +19,12 @@ public class TestMySQLSSL
                 }
                 try
                 {
-                        String url = "jdbc:mysql://bullhorn-ps-2.clwd8bjaryxj.us-east-1.rds.amazonaws.com:3306/ibisstaging"+
+                        String url = "jdbc:mysql://somerdsurl.rds.amazonaws.com:3306/ibisstaging"+
                                 "?verifyServerCertificate=true"+
                                 "&useSSL=true"+
                                 "&requireSSL=true";
-                        String user = "ibisstaging";
-                        String password = "bU9s82ns9NjdlKnSj3ksnds";
+                        String user = "login";
+                        String password = "passwd";
 
                         Class dbDriver = Class.forName("com.mysql.jdbc.Driver");
                         con = DriverManager.getConnection(url, user, password);
