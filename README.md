@@ -2,10 +2,14 @@
 simple java app to test ssl connection to mysql rds 
 
 test / prove ssl works over mysql client : 
-mysql -u user -p -h some.mysql.rds.url.amazonaws.com \
+
+mysql -u user -p -h some.mysql.rds.url.amazonaws.com 
            --ssl-ca=/root/rds-combined-ca-bundle.pem --ssl-verify-server-cert
+           
 mysql> status;
+
 ...
+
 SSL:                    Cipher in use is AES256-SHA
 
 java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl TestMySQLSSL
