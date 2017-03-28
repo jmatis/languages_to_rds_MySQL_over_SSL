@@ -9,7 +9,9 @@ mysql> status;
 SSL:                    Cipher in use is AES256-SHA
 
 java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl TestMySQLSSL
+
 or 
+
 java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl \
      -Djavax.net.ssl.keyStore=/etc/pki/ca-trust/extracted/java/cacerts \
      -Djavax.net.ssl.keyStorePassword=changeit -Djavax.net.ssl.trustStorePassword=changeit \
