@@ -1,22 +1,12 @@
 # test_java_to_mysql_over_ssl
 simple java app to test ssl connection to mysql rds 
 
-test / prove ssl works over mysql client : 
+I presume you have spinned up simple AWS ec2 instance with for example Amazon Linux AMI release 2016.09
 
-mysql -u user -p -h some.mysql.rds.url.amazonaws.com 
-           --ssl-ca=/root/rds-combined-ca-bundle.pem --ssl-verify-server-cert
-           
-mysql> status;
-
-...
-
-SSL:                    Cipher in use is AES256-SHA
-
-java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl TestMySQLSSL
-
-or 
-
-java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl \
-     -Djavax.net.ssl.keyStore=/etc/pki/ca-trust/extracted/java/cacerts \
-     -Djavax.net.ssl.keyStorePassword=changeit -Djavax.net.ssl.trustStorePassword=changeit \
-     -Djavax.net.ssl.keyStore=/etc/pki/ca-trust/extracted/java/cacerts TestMySQLSSL
+prerequisites: 
+1. java and javac
+yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+2. wget
+yum -y install wget
+3. AWS RDS certificate properly imported to java keystore (https://gist.github.com/steini/d40a59ae4a9036c4d5a4) 
+./import-rds-certs.sh
