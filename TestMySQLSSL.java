@@ -6,6 +6,16 @@ public class TestMySQLSSL
 {
         public static void main (String[] args)
         {
+                // update your url variable to your database
+                String url = "jdbc:mysql://someRDSurl.rds.amazonaws.com:3306/somedatabase"
+                String sslurl = url +
+                                "?verifyServerCertificate=true"+
+                                "&useSSL=true"+
+                                "&requireSSL=true";
+                // update user and password variables to your login and password
+                String user = "login";
+                String password = "passwd";
+                
                 Connection con = null;
                 try {
                         System.out.println("Before loading SQLServerDriver:");
@@ -19,19 +29,12 @@ public class TestMySQLSSL
                 }
                 try
                 {
-                        String url = "jdbc:mysql://somerdsurl.rds.amazonaws.com:3306/ibisstaging"+
-                                "?verifyServerCertificate=true"+
-                                "&useSSL=true"+
-                                "&requireSSL=true";
-                        String user = "login";
-                        String password = "passwd";
-
                         Class dbDriver = Class.forName("com.mysql.jdbc.Driver");
-                        con = DriverManager.getConnection(url, user, password);
+                        con = DriverManager.getConnection(sslurl, user, password);
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                        ex.printStackTrace();
+                        e.printStackTrace();
                 }
                 finally
                 {
@@ -41,7 +44,10 @@ public class TestMySQLSSL
                                 {
                                         con.close();
                                 }
-                                catch (Exception e){}
+                                catch (Exception e)
+                                {
+                                        e.printStackTrace();
+                                }
                         }
                 }
         }
