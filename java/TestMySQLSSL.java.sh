@@ -8,9 +8,12 @@ if [ ! -f "mysql-connector-java-5.1.41-bin.jar" ]; then
   rmdir mysql-connector-java-5.1.41
 fi
 
-# now compile our java code (i have tested this in java8 
+# now compile our java code (i have tested this in java8
 if [ ! -f "TestMySQLSSL.class" ]; then
   javac TestMySQLSSL.java
 fi
 
-java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl TestMySQLSSL
+# java -cp ".:mysql-connector-java-5.1.41-bin.jar" -Djavax.net.debug=ssl TestMySQLSSL
+java -cp ".:mysql-connector-java-5.1.41-bin.jar" TestMySQLSSL
+
+rm -f TestMySQLSSL.class
