@@ -7,7 +7,7 @@ public class TestMySQLSSL
         public static void main (String[] args)
         {
                 // update your url variable to your database
-                String url = "jdbc:mysql://someRDSurl.rds.amazonaws.com:3306/somedatabase"
+                String url = "jdbc:mysql://someRDSurl.rds.amazonaws.com:3306/somedatabase";
                 String sslurl = url +
                                 "?verifyServerCertificate=true"+
                                 "&useSSL=true"+
