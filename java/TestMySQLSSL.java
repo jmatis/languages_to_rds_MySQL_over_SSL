@@ -1,17 +1,13 @@
 import java.sql.*;
 import java.util.*;
 
-
-public class TestMySQLSSL
-{
-        public static void main (String[] args)
-        {
+public class TestMySQLSSL {
+        public static void main (String[] args) {
                 // update your url variable to your database
                 String url = "jdbc:mysql://someRDSurl.rds.amazonaws.com:3306/somedatabase";
-                String sslurl = url +
-                                "?verifyServerCertificate=true"+
-                                "&useSSL=true"+
-                                "&requireSSL=true";
+                String sslurl = url + "?verifyServerCertificate=true"+
+                                        "&useSSL=true"+
+                                        "&requireSSL=true";
                 // update user and password variables to your login and password
                 String user = "login";
                 String password = "passwd";
@@ -23,17 +19,14 @@ public class TestMySQLSSL
                         Class.forName("com.mysql.jdbc.Driver") ;
                         System.out.println("After loading SQLServerDriver:");
                         listDrivers();
-
                 } catch (Exception e) {
                         System.err.println("Exception: "+e.getMessage());
                 }
-                try
-                {
+                try {
                         Class dbDriver = Class.forName("com.mysql.jdbc.Driver");
                         con = DriverManager.getConnection(sslurl, user, password);
                 }
-                catch (Exception e)
-                {
+                catch (Exception e) {
                         e.printStackTrace();
                 }
                 Statement stmt = null;
@@ -60,30 +53,23 @@ public class TestMySQLSSL
                         System.err.println("SQLException: " + e.getMessage());
                         System.err.println("SQLState: " + e.getSQLState());
                         System.err.println("VendorError: " + e.getErrorCode());
-                }
-                finally
-                {
+                } finally {
                         if (rs != null) {
                                 try {
                                         rs.close();
                                 } catch (SQLException sqlEx) { } // ignore
                                 rs = null;
                         }
-
                         if (stmt != null) {
                                 try {
                                         stmt.close();
                                 } catch (SQLException sqlEx) { } // ignore
                                 stmt = null;
                         }
-                        if (con != null)
-                        {
-                                try
-                                {
+                        if (con != null) {
+                                try {
                                         con.close();
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                         e.printStackTrace();
                                 }
                         }
